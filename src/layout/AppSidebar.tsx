@@ -7,20 +7,14 @@ import { useSidebar } from "../context/SidebarContext";
 import { TbMessageReport } from "react-icons/tb";
 
 import {
-  BoxCubeIcon,
-  CalenderIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
   ListIcon,
   PageIcon,
-  PieChartIcon,
-  PlugInIcon,
-  TableIcon,
   UserCircleIcon,
 } from "../icons/index";
 import { GrTransaction } from "react-icons/gr";
-import SidebarWidget from "./SidebarWidget";
 import { IoLinkSharp } from "react-icons/io5";
 
 

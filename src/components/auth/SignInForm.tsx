@@ -3,10 +3,10 @@
 import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
-import Button from "@/components/ui/button/Button";
+
 import { EyeCloseIcon, EyeIcon } from "@/icons";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
+
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -64,7 +64,7 @@ export default function SignInForm() {
                   placeholder="info@gmail.com"
                   type="email"
                   value={email}
-                  onChange={(e: any) => setEmail(e.target.value)}
+                  onChange={(e: any) => setEmail(e.target.value)} // eslint-disable-line @typescript-eslint/no-explicit-any
                   required
                 />
               </div>
@@ -78,7 +78,7 @@ export default function SignInForm() {
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
                     value={password}
-                    onChange={(e: any) => setPassword(e.target.value)}
+                    onChange={(e: any) => setPassword(e.target.value)} // eslint-disable-line @typescript-eslint/no-explicit-any
                     required
                   />
                   <span
