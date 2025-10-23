@@ -1,4 +1,11 @@
-export { default } from "next-auth/middleware";
+import { withAuth } from "next-auth/middleware";
+
+export const middleware = withAuth({
+  // Options (optional)
+  pages: {
+    signIn: "/signin",
+  },
+});
 
 export const config = {
   matcher: [
