@@ -1,7 +1,5 @@
 "use client";
-import React from "react";
-import { TbArrowLeftFromArc, TbArrowRightFromArc } from "react-icons/tb";
-
+import { FiChevronsRight, FiChevronsLeft} from "react-icons/fi";
 
 
 interface PaginationProps {
@@ -96,7 +94,7 @@ export default function Pagination({ page, limit, total, onPageChange, onLimitCh
               className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 hover:bg-white/5 disabled:opacity-50"
             >
               <span className="sr-only">Previous</span>
-              <TbArrowLeftFromArc aria-hidden="true" className="size-5" />
+              <FiChevronsLeft aria-hidden="true" className="size-5" />
             </button>
 
             {getPageNumbers().map((p, idx) =>
@@ -128,7 +126,7 @@ export default function Pagination({ page, limit, total, onPageChange, onLimitCh
               className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 hover:bg-white/5 disabled:opacity-50"
             >
               <span className="sr-only">Next</span>
-              <TbArrowRightFromArc aria-hidden="true" className="size-5" />
+              <FiChevronsRight aria-hidden="true" className="size-5" />
             </button>
           </nav>
         </div>
