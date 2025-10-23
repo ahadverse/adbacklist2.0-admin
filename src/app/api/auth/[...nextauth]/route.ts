@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import baseApi from "@/utils/axiosIntance";
 
-export const authOptions = {
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -16,7 +18,7 @@ export const authOptions = {
             email: credentials?.email,
             password: credentials?.password,
           });
-
+console.log(res)
           const data = res.data;
           if (data.message === "success") {
             return {
@@ -62,4 +64,4 @@ export const authOptions = {
 
 const handler = NextAuth(authOptions as any);
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST , handler as PATCH, };

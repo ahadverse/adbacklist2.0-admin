@@ -1,13 +1,10 @@
 "use client"
 import { DashboardStats, EcommerceMetrics } from "@/components/ecommerce/EcommerceMetrics";
 import React, { useEffect, useState } from "react";
-import MonthlyTarget from "@/components/ecommerce/MonthlyTarget";
 import MonthlySalesChart from "@/components/ecommerce/MonthlySalesChart";
-import axios from "axios";
 import { toast } from "react-toastify";
 import Head from "next/head";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { useSession } from "next-auth/react";
 import baseApi from "@/utils/axiosIntance";
 
 

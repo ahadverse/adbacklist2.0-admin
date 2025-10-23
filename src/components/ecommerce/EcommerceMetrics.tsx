@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { BoxIconLine, GroupIcon } from "@/icons";
 import { FaBlog, FaListAlt, FaMoneyBill } from "react-icons/fa";
 import { BsCurrencyDollar } from "react-icons/bs";
 
@@ -33,7 +32,7 @@ export const EcommerceMetrics = ({ stats }: EcommerceMetricsProps) => {
     {
       label: "Total Users",
       value: stats.allUsers,
-      icon: <GroupIcon className="text-blue-600 size-6" />,
+      icon: <FaBlog className="text-blue-600 size-6" />,
     },
     {
       label: "All Posts",
@@ -43,7 +42,7 @@ export const EcommerceMetrics = ({ stats }: EcommerceMetricsProps) => {
     {
       label: "Premium Posts",
       value: stats.premiumPost,
-      icon: <BoxIconLine className="text-violet-600 size-6" />,
+      icon: <FaBlog className="text-violet-600 size-6" />,
     },
     {
       label: "All Blogs",

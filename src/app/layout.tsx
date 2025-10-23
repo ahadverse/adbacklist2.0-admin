@@ -5,7 +5,7 @@ import { Bounce, ToastContainer } from "react-toastify";
 import { SidebarProvider } from '@/context/SidebarContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { SessionProvider } from "next-auth/react";
-import type { Session } from "next-auth";
+import { Session } from "next-auth";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -16,7 +16,7 @@ export default function RootLayout({
   session,
 }: {
   children: React.ReactNode;
-  session?: Session| null;
+  session?: Session;
 }) {
   return (
     <html lang="en">

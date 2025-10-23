@@ -4,24 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
-import { TbMessageReport } from "react-icons/tb";
-
-import {
-  BoxCubeIcon,
-  CalenderIcon,
-  ChevronDownIcon,
-  GridIcon,
-  HorizontaLDots,
-  ListIcon,
-  PageIcon,
-  PieChartIcon,
-  PlugInIcon,
-  TableIcon,
-  UserCircleIcon,
-} from "../icons/index";
+import { TbDots, TbMessageReport } from "react-icons/tb";
 import { GrTransaction } from "react-icons/gr";
-import SidebarWidget from "./SidebarWidget";
-import { IoLinkSharp } from "react-icons/io5";
+import { IoChevronDown, IoChevronDownCircleOutline, IoLinkSharp, IoStatsChart } from "react-icons/io5";
+import { FaBlog, FaBuysellads, FaUsers } from "react-icons/fa";
 
 
 type NavItem = {
@@ -33,24 +19,24 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon />,
+    icon: <IoStatsChart className="text-lg" />,
     name: "Dashboard",
      path: "/"
     // subItems: [{ name: "Ecommerce",, pro: false }],
   },
   {
-    icon: <GrTransaction className="text-xl" />,
+    icon: <GrTransaction className="text-lg" />,
     name: "Transactions",
     path: "/transactions",
   },
   {
-    icon: <UserCircleIcon />,
+    icon: <FaUsers  className="text-lg" />,
     name: "Users",
     path: "/users",
   },
   {
     name: "Ads",
-    icon: <ListIcon />,
+    icon: <FaBuysellads className="text-lg"  />,
     subItems: [
       { name: "Pending Ads", path: "/pending-ads", },
       { name: "Running Ads", path: "/running-ads",}
@@ -68,7 +54,7 @@ const navItems: NavItem[] = [
   },
   {
     name: "Blogs",
-    icon: <PageIcon />,
+    icon: <FaBlog className="text-lg" />,
     subItems: [
       { name: "Add Blog", path: "/add-blogs" },
       { name: "Blog List", path: "/blogs-list"}
@@ -118,7 +104,7 @@ const AppSidebar: React.FC = () => {
                 <span className={`menu-item-text`}>{nav.name}</span>
               )}
               {(isExpanded || isHovered || isMobileOpen) && (
-                <ChevronDownIcon
+                <IoChevronDown 
                   className={`ml-auto w-5 h-5 transition-transform duration-200  ${
                     openSubmenu?.type === menuType &&
                     openSubmenu?.index === index
@@ -338,7 +324,7 @@ const AppSidebar: React.FC = () => {
                 {isExpanded || isHovered || isMobileOpen ? (
                   "Menu"
                 ) : (
-                  <HorizontaLDots />
+                  <TbDots />
                 )}
               </h2>
               {renderMenuItems(navItems, "main")}
