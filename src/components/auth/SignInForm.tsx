@@ -4,7 +4,6 @@ import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
 import { signIn } from "next-auth/react";
-
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";

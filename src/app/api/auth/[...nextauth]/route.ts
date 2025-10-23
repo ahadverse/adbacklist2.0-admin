@@ -18,7 +18,6 @@ const authOptions = {
             email: credentials?.email,
             password: credentials?.password,
           });
-console.log(res)
           const data = res.data;
           if (data.message === "success") {
             return {
