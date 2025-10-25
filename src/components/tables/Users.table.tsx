@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -9,39 +9,39 @@ import {
   TableRow,
 } from "../ui/table";
 import Badge from "../ui/badge/Badge";
+import { toast } from "react-toastify";
+import baseApi from "@/utils/axiosIntance";
+import ConfirmDeleteModal from "../modals/Delete";
+import Link from "next/link";
+import { BsEye } from "react-icons/bs";
 
-
-export interface Transaction {
+export interface User {
   _id: string;
-  status: string;
-  trxId: string;
-  currency: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  amount: number;
-  exactAmount: number;
-  userId: {
-    _id: string;
-    firstName: string;
-    lastName: string;
-    avater: string;
-    role: string;
-    email: string;
-  };
-  creditGiven: string;
+  avater: string;
+  role: string;
+  isDelete: boolean;
+  credit: number;
   createdAt: string;
+  updatedAt: string;
 }
 
-interface TransactionTableProps {
-  transactions: Transaction[];
+interface UsersTableProps {
+  users: User[];
+  reload : boolean,
+  setReload: React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 
-export default function TransactionTable({ transactions }: TransactionTableProps) {
+export default function UsersTable({ users , setReload, reload }: UsersTableProps) {
+
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
-        <div className="min-w-[1002px]">
+        <div className="min-w-[900px]">
           <Table>
-            {/* Table Header */}
             <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
               <TableRow>
                 <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
@@ -51,87 +51,79 @@ export default function TransactionTable({ transactions }: TransactionTableProps
                   Email
                 </TableCell>
                 <TableCell className="px-4 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
-                  Transaction ID
-                </TableCell>
-                <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
-                  Amount
-                </TableCell>
-                <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
-                  Currency
-                </TableCell>
-                <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
-                  Status
+                  Role
                 </TableCell>
                 <TableCell className="px-4 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
-                  Credit Given
+                  Credit
+                </TableCell>
+                <TableCell className="px-4 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
+                  Status
                 </TableCell>
                 <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
                   Created At
+                </TableCell>
+                <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
+                  Actions
                 </TableCell>
               </TableRow>
             </TableHeader>
 
             {/* Table Body */}
             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-              {transactions?.map((trx) => (
-                <TableRow key={trx?._id}>
+              {users.map((user) => (
+                <TableRow key={user._id}>
                   {/* User */}
                   <TableCell className="px-5 py-4 sm:px-6 text-start">
                     <div className="flex items-center gap-3">
-                    
+                      <img
+                        src={user.avater}
+                        alt={user.firstName}
+                        className="h-8 w-8 rounded-full object-cover"
+                      />
                       <div>
                         <span className="block capitalize font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                          {trx?.userId?.firstName} {trx?.userId?.lastName}
+                          {user.firstName} {user.lastName}
                         </span>
-                  
                       </div>
                     </div>
                   </TableCell>
 
                   {/* Email */}
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {trx?.email}
+                    {user.email}
                   </TableCell>
 
-                  {/* Transaction ID */}
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {trx?.trxId}
+                  {/* Role */}
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400 capitalize">
+                    {user.role}
                   </TableCell>
 
-                  {/* Amount */}
+                  {/* Credit */}
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {trx?.amount}
-                  </TableCell>
-
-                  {/* Currency */}
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {trx?.currency}
+                    {user.credit}
                   </TableCell>
 
                   {/* Status */}
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  <TableCell className="px-4 py-3 text-start">
                     <Badge
                       size="sm"
-                      color={
-                        trx?.status === "success"
-                          ? "success"
-                          : trx?.status === "pending"
-                          ? "warning"
-                          : "error"
-                      }
+                      color={!user.isDelete ? "success" : "error"}
                     >
-                      {trx?.status}
+                      {user.isDelete ? "Deleted" : "Active"}
                     </Badge>
-                  </TableCell>
-
-                  {/* Credit Given */}
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {trx?.creditGiven}
                   </TableCell>
 
                   {/* Created At */}
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {new Date(trx?.createdAt).toLocaleString()}
+                    {new Date(user.createdAt).toLocaleString()}
+                  </TableCell>
+
+                  {/* Delete Button */}
+                  <TableCell className="px-4 py-3 flex text-center">
+                    <ConfirmDeleteModal id={user?._id} reload={reload} route="users" setReload={setReload} />
+                    <Link className="px-2" href={`/users/details/${user?._id}`}>
+                    <BsEye className="text-white mt-1" />
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}

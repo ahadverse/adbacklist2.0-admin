@@ -35,7 +35,7 @@ export default function Pagination({ page, limit, total, onPageChange, onLimitCh
       {/* Mobile Previous/Next */}
       <div className=" sm:hidden">
          <div>
-          <p className="text-sm text-gray-300">
+          <p className="text-sm dark:text-gray-300 text-gray-800">
             Showing <span className="font-medium">{(page - 1) * limit + 1}</span> to{" "}
             <span className="font-medium">{Math.min(page * limit, total)}</span> of{" "}
             <span className="font-medium">{total}</span> results
@@ -59,26 +59,26 @@ export default function Pagination({ page, limit, total, onPageChange, onLimitCh
         </button>
         </div>
         <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-300">Show</span>
+        <span className="text-sm dark:text-gray-300 text-gray-800">Show</span>
         <select
           value={limit}
           onChange={(e) => onLimitChange(Number(e.target.value))}
-          className="rounded border border-gray-700 bg-white/5 px-2 py-1 text-gray-200 text-sm focus:outline-none"
+          className="rounded border border-gray-700  px-2 py-1 text-gray-800 text-sm focus:outline-none"
         >
           {limitOptions.map((opt) => (
-            <option key={opt} value={opt}>
+            <option className="" key={opt} value={opt}>
               {opt}
             </option>
           ))}
         </select>
-        <span className="text-sm text-gray-300">per page</span>
+        <span className="text-sm dark:text-gray-300 text-gray-800">per page</span>
       </div>
       </div>
 
       {/* Desktop pagination */}
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-gray-300">
+          <p className="text-sm dark:text-gray-300 text-gray-800">
             Showing <span className="font-medium">{(page - 1) * limit + 1}</span> to{" "}
             <span className="font-medium">{Math.min(page * limit, total)}</span> of{" "}
             <span className="font-medium">{total}</span> results
@@ -91,7 +91,7 @@ export default function Pagination({ page, limit, total, onPageChange, onLimitCh
             <button
               onClick={() => onPageChange(page - 1)}
               disabled={page === 1}
-              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 hover:bg-white/5 disabled:opacity-50"
+              className="relative inline-flex items-center rounded-l-md px-2 py-2 dark:text-gray-400 text-gray-800 hover:bg-white/5 disabled:opacity-50"
             >
               <span className="sr-only">Previous</span>
               <FiChevronsLeft aria-hidden="true" className="size-5" />
@@ -101,7 +101,7 @@ export default function Pagination({ page, limit, total, onPageChange, onLimitCh
               p === "..." ? (
                 <span
                   key={idx}
-                  className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-400"
+                  className="relative inline-flex items-center px-4 py-2 text-sm font-semibold dark:text-gray-400 text-gray-800"
                 >
                   ...
                 </span>
@@ -123,7 +123,7 @@ export default function Pagination({ page, limit, total, onPageChange, onLimitCh
             <button
               onClick={() => onPageChange(page + 1)}
               disabled={page === totalPages}
-              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 hover:bg-white/5 disabled:opacity-50"
+              className="relative inline-flex items-center rounded-r-md px-2 py-2 dark:text-gray-400 text-gray-800 hover:bg-white/5 disabled:opacity-50"
             >
               <span className="sr-only">Next</span>
               <FiChevronsRight aria-hidden="true" className="size-5" />
@@ -131,19 +131,19 @@ export default function Pagination({ page, limit, total, onPageChange, onLimitCh
           </nav>
         </div>
               <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-300">Show</span>
+        <span className="text-sm dark:text-gray-300 text-gray-800">Show</span>
         <select
           value={limit}
           onChange={(e) => onLimitChange(Number(e.target.value))}
-          className="rounded border border-gray-700 bg-white/5 px-2 py-1 text-gray-200 text-sm focus:outline-none"
+          className="rounded border border-gray-700 dark:bg-gray-800 bg-white text-black dark:text-white px-2 py-1  text-sm focus:outline-none"
         >
           {limitOptions.map((opt) => (
-            <option key={opt} value={opt}>
+            <option className="" key={opt} value={opt}>
               {opt}
             </option>
           ))}
         </select>
-        <span className="text-sm text-gray-300">per page</span>
+        <span className="text-sm dark:text-gray-300 text-gray-800">per page</span>
       </div>
       </div>
     </div>
