@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "../ui/table";
 import Badge from "../ui/badge/Badge";
+import UpdateCreditModal from "../modals/TransactionCredit";
 
 
 export interface Transaction {
@@ -33,9 +34,11 @@ export interface Transaction {
 
 interface TransactionTableProps {
   transactions: Transaction[];
+    reload : boolean,
+    setReload: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function TransactionTable({ transactions }: TransactionTableProps) {
+export default function TransactionTable({ transactions ,  setReload, reload}: TransactionTableProps) {
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
@@ -67,6 +70,9 @@ export default function TransactionTable({ transactions }: TransactionTableProps
                 </TableCell>
                 <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
                   Created At
+                </TableCell>
+                <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
+              Action
                 </TableCell>
               </TableRow>
             </TableHeader>
@@ -125,13 +131,17 @@ export default function TransactionTable({ transactions }: TransactionTableProps
                   </TableCell>
 
                   {/* Credit Given */}
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    {trx?.creditGiven}
+                  <TableCell className={`${trx?.creditGiven == 'true' ? 'text-green-500' : 'text-red-600'} px-4 py-3 text-start text-theme-sm`}>
+                    {trx?.creditGiven == 'true'? 'Yes' : "No"}
                   </TableCell>
 
                   {/* Created At */}
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  <TableCell className="px-4 w-[20px] py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                     {new Date(trx?.createdAt).toLocaleString()}
+                  </TableCell>
+
+                  <TableCell className="px-4 w-[20px] py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                <UpdateCreditModal reload={reload} setReload={setReload} id={trx?._id} />
                   </TableCell>
                 </TableRow>
               ))}

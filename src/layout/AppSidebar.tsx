@@ -33,6 +33,7 @@ const navItems: NavItem[] = [
     icon: <FaUsers  className="text-lg" />,
     name: "Users",
     path: "/users",
+
   },
   {
     name: "Ads",

@@ -14,6 +14,7 @@ import baseApi from "@/utils/axiosIntance";
 import ConfirmDeleteModal from "../modals/Delete";
 import Link from "next/link";
 import { BsEye } from "react-icons/bs";
+import UpdateCreditModal from "../modals/Credit";
 
 export interface User {
   _id: string;
@@ -32,7 +33,6 @@ interface UsersTableProps {
   users: User[];
   reload : boolean,
   setReload: React.Dispatch<React.SetStateAction<boolean>>;
-
 }
 
 export default function UsersTable({ users , setReload, reload }: UsersTableProps) {
@@ -121,6 +121,7 @@ export default function UsersTable({ users , setReload, reload }: UsersTableProp
                   {/* Delete Button */}
                   <TableCell className="px-4 py-3 flex text-center">
                     <ConfirmDeleteModal id={user?._id} reload={reload} route="users" setReload={setReload} />
+                    <UpdateCreditModal userId={user?._id} reload={reload} setReload={setReload} />
                     <Link className="px-2" href={`/users/details/${user?._id}`}>
                     <BsEye className="text-white mt-1" />
                     </Link>

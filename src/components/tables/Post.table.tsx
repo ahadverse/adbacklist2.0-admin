@@ -11,8 +11,11 @@ import {
 import Badge from "../ui/badge/Badge";
 import Link from "next/link";
 import { BsEye } from "react-icons/bs";
+import ConfirmDeleteModal from "../modals/Delete";
+import ConfirmApproveModal from "../modals/Approved";
 
 export interface Post {
+  isApproved: boolean;
   _id: string;
   name: string;
   category: string;
@@ -23,9 +26,12 @@ export interface Post {
 
 interface PostsTableProps {
   posts: Post[];
+  reload?: boolean;
+  admin?: boolean;
+  setReload?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function PostsTable({ posts }: PostsTableProps) {
+export default function PostsTable({ posts, setReload, reload, admin }: PostsTableProps) {
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
@@ -48,11 +54,11 @@ export default function PostsTable({ posts }: PostsTableProps) {
                 <TableCell className="px-4 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
                   Created At
                 </TableCell>
-                         <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
-                                  Actions
-                                </TableCell>
+                <TableCell className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400" isHeader>
+                  Actions
+                </TableCell>
               </TableRow>
-              
+
             </TableHeader>
 
             {/* Table Body */}
@@ -85,9 +91,17 @@ export default function PostsTable({ posts }: PostsTableProps) {
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                     {new Date(post?.createdAt).toLocaleString()}
                   </TableCell>
-                    <TableCell className="px-4 py-3 flex h-full justify-center items-center">
+                  <TableCell className="px-4 py-3 flex h-full justify-center items-center">
+                    {admin && <><ConfirmDeleteModal id={post?._id} reload={reload} route="posts" setReload={setReload} />
+
+                       <ConfirmApproveModal id={post?._id} reload={reload} route="posts" isApproved={!post?.isApproved} setReload={setReload} />
+                  
+                       </>
+
+                    }
+
                     <Link className="px-2 block" target="_blank" href={`https://adbacklist2-0.vercel.app/post/${post?.category}/${post?._id}`}>
-                    <BsEye className="text-white mt-1" />
+                      <BsEye className="dark:text-white mt-1" />
                     </Link>
                   </TableCell>
                 </TableRow>

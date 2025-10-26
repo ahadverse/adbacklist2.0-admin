@@ -3,19 +3,23 @@ import { useState } from "react";
 import { Modal } from "@/components/ui/modal";
 import baseApi from "@/utils/axiosIntance";
 import { toast } from "react-toastify";
-import { BsTrash } from "react-icons/bs";
+import { FaCheckCircle } from "react-icons/fa";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-interface ConfirmDeleteModalProps {
+
+interface ConfirmApproveModalProps {
     id: string | null;
     route: string;
     reload: boolean;
+    isApproved: boolean;
     setReload: (value: boolean) => void;
 }
 
-const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
+const ConfirmApproveModal: React.FC<ConfirmApproveModalProps> = ({
     id,
     route,
     reload,
+    isApproved,
     setReload,
 }) => {
     const [loading, setLoading] = useState(false);
@@ -23,27 +27,27 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
 
     const onClose = () => setOpen(false)
 
-    const handleDelete = async () => {
+    const handleApprove = async () => {
         if (!id) return;
         setLoading(true);
         try {
-            await baseApi.delete(`${route}/${id}`);
-            toast.success("Deleted successfully.");
+            await baseApi.put(`${route}/approved/${id}`, {isApproved});
+            toast.success("Approved successfully.");
+              setLoading(false);
             setReload(!reload);
             onClose();
         } catch (err: any) {
+              setLoading(false);
             console.error(err);
             toast.error(err.message || "Something went wrong!");
-        } finally {
-            setLoading(false);
         }
     };
 
     return (
         <div>
 
-            <button title="Delete" onClick={() => setOpen(true)} className="dark:text-white text-sm px-2 rounded-full">
-                <BsTrash />
+            <button title="Approve" onClick={() => setOpen(true)} className={`${isApproved ? 'text-green-500' : 'text-red-600'} text-sm px-2 rounded-full`}>
+                <FaCheckCircle  />
             </button>
 
             <Modal
@@ -52,10 +56,10 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
                 className="max-w-[400px] p-6 text-center"
             >
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
-                    Confirm Delete
+                    Confirm  {isApproved ? 'Approve' : 'Disapprove'}
                 </h3>
                 <p className="mt-2 text-gray-500 dark:text-gray-400">
-                    Are you sure you want to delete this item? This action cannot be undone.
+                    Are you sure you want to Approve this item?
                 </p>
 
                 <div className="flex justify-center gap-3 mt-6">
@@ -66,11 +70,11 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
                         Cancel
                     </button>
                     <button
-                        onClick={handleDelete}
+                        onClick={handleApprove}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50"
+                        className="w-28 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50"
                     >
-                        {loading ? "Deleting..." : "Delete"}
+                        {loading ? <AiOutlineLoading3Quarters className="animate-spin text-xl m-auto text-white" /> : <> {isApproved ? 'Approve' : 'Disapprove'}</>}
                     </button>
                 </div>
             </Modal>
@@ -78,4 +82,4 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
     );
 };
 
-export default ConfirmDeleteModal;
+export default ConfirmApproveModal;

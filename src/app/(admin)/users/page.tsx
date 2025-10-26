@@ -37,10 +37,12 @@ const Users = () => {
   }, [sortOrder, search, pagination.page, pagination.limit, reload]);
 
   const handleSearchChange = (value: string) => {
+     setPagination({ ...pagination, page : 1})
     setSearch(value);
   };
 
   const handleSelect = (value: string) => {
+     setPagination({ ...pagination, page : 1})
     setSortOrder(value);
   };
 
@@ -72,7 +74,7 @@ const Users = () => {
             limit={pagination.limit}
             total={pagination.total}
             onPageChange={(e) => setPagination({ ...pagination, page: e })}
-            onLimitChange={(e) => setPagination({ ...pagination, limit: e })}
+            onLimitChange={(e) => setPagination({ ...pagination, page : 1, limit: e })}
           />
         </div>
       )}

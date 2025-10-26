@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 const Transactions = () => {
 
   const [loading, setLoading] = useState(true)
+  const [ reload, setReload] = useState(false)
   const [transactions, setTransactions] = useState([])
   const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0 })
   const [search, setSearch] = useState("")
@@ -31,12 +32,14 @@ const Transactions = () => {
       }
     };
     fetchDashboardData();
-  }, [sortOrder, search, pagination.page, pagination.limit]);
+  }, [sortOrder, search, pagination.page, pagination.limit, reload]);
 
   const handleSearchChange = (value: string) => {
+    setPagination({ ...pagination, page : 1})
     setSearch(value);
   };
     const handleSelect = (value: string) => {
+    setPagination({ ...pagination, page : 1})
     setSortOrder(value);
   };
 
@@ -62,11 +65,12 @@ const Transactions = () => {
         <AiOutlineLoading3Quarters className="animate-spin text-3xl text-white" />
       </p> : <div>
     
-        <TransactionTable transactions={transactions as Transaction[]} />
+        <TransactionTable transactions={transactions as Transaction[]} reload={reload} setReload={setReload} />
         <Pagination page={pagination.page}
           limit={pagination.limit}
           total={pagination.total}
-          onPageChange={e => setPagination({ ...pagination, page: e })} onLimitChange={e => setPagination({ ...pagination, limit: e })} />
+          onPageChange={e => setPagination({ ...pagination, page: e })} 
+          onLimitChange={e => setPagination({ ...pagination, page : 1, limit: e })} />
       </div>}
     </div>
   );

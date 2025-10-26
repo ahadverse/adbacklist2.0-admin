@@ -1,0 +1,291 @@
+[
+  {
+    "id": 1,
+    "name": "Adult",
+    "slug": "adult",
+    "subcategories": [
+      { "id": 101, "name": "Adult Jobs", "slug": "adult-jobs" },
+      { "id": 102, "name": "Bodyrubs", "slug": "bodyrubs" },
+      { "id": 103, "name": "Dom-Fetish", "slug": "dom-fetish" },
+      { "id": 104, "name": "Female Escorts", "slug": "female-escorts" },
+      { "id": 105, "name": "Male Escorts", "slug": "male-escorts" },
+      { "id": 106, "name": "Strip Clubs", "slug": "strip-clubs" },
+      { "id": 107, "name": "Phone and Websites", "slug": "phone-and-websites" },
+      { "id": 108, "name": "Sugar Babies", "slug": "sugar-babies" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Dating",
+    "slug": "dating",
+    "subcategories": [
+      { "id": 201, "name": "Women-Men", "slug": "women-men" },
+      { "id": 202, "name": "Men-Men", "slug": "men-men" },
+      { "id": 203, "name": "Men-Women", "slug": "men-women" },
+      { "id": 204, "name": "Transgender", "slug": "transgender" },
+      { "id": 205, "name": "Women-Women", "slug": "women-women" },
+      { "id": 206, "name": "Hookup Tonight", "slug": "hookup-tonight" },
+      { "id": 207, "name": "Missed Connections", "slug": "missed-connections" },
+      {
+        "id": 208,
+        "name": "Meetup Face to Face",
+        "slug": "meetup-face-to-face"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Housing",
+    "slug": "housing",
+    "subcategories": [
+      { "id": 301, "name": "Business For Sale", "slug": "business-for-sale" },
+      { "id": 302, "name": "Apts-Housing", "slug": "apts-housing" },
+      { "id": 303, "name": "Housing Wanted", "slug": "housing-wanted" },
+      { "id": 304, "name": "Land For Sale", "slug": "land-for-sale" },
+      {
+        "id": 305,
+        "name": "Office Space and Commercial",
+        "slug": "office-space-and-commercial"
+      },
+      {
+        "id": 306,
+        "name": "Parking and Storage",
+        "slug": "parking-and-storage"
+      },
+      {
+        "id": 307,
+        "name": "Real Estate For Sale",
+        "slug": "real-estate-for-sale"
+      },
+      { "id": 308, "name": "Property for Rent", "slug": "property-for-rent" },
+      { "id": 309, "name": "Room-Share", "slug": "room-share" },
+      { "id": 310, "name": "Room Wanted", "slug": "room-wanted" },
+      {
+        "id": 311,
+        "name": "Flatshare and Houseshare",
+        "slug": "flatshare-and-houseshare"
+      },
+      { "id": 312, "name": "Vacation Rentals", "slug": "vacation-rentals" },
+      { "id": 313, "name": "Condos", "slug": "condos" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Community",
+    "slug": "community",
+    "subcategories": [
+      { "id": 401, "name": "General", "slug": "general" },
+      {
+        "id": 402,
+        "name": "Activities and Hobbies",
+        "slug": "activities-and-hobbies"
+      },
+      { "id": 403, "name": "Classes", "slug": "classes" },
+      { "id": 404, "name": "Childcare", "slug": "childcare" },
+      { "id": 405, "name": "Groups", "slug": "groups" },
+      { "id": 406, "name": "Events", "slug": "events" },
+      { "id": 407, "name": "Local News", "slug": "local-news" },
+      { "id": 408, "name": "Missed Connections", "slug": "missed-connections" },
+      {
+        "id": 409,
+        "name": "Musicians and Artists",
+        "slug": "musicians-and-artists"
+      },
+      { "id": 410, "name": "Politics", "slug": "politics" },
+      {
+        "id": 411,
+        "name": "Rideshare and Travel Partners",
+        "slug": "rideshare-and-travel-partners"
+      },
+      { "id": 412, "name": "Rants-Raves", "slug": "rants-raves" },
+      { "id": 413, "name": "Volunteers", "slug": "volunteers" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "For Sale",
+    "slug": "for-sale",
+    "subcategories": [
+      {
+        "id": 501,
+        "name": "Antiques & Collectibles",
+        "slug": "antiques-collectibles"
+      },
+      { "id": 502, "name": "Appliances", "slug": "appliances" },
+      { "id": 503, "name": "Auto Parts", "slug": "auto-parts" },
+      { "id": 504, "name": "Barter", "slug": "barter" },
+      { "id": 505, "name": "Boats & Motorcycles", "slug": "boats-motorcycles" },
+      { "id": 506, "name": "Baby & Kid", "slug": "baby-kid" },
+      { "id": 507, "name": "Books", "slug": "books" },
+      { "id": 508, "name": "Business", "slug": "business" },
+      { "id": 509, "name": "Clothes", "slug": "clothes" },
+      { "id": 510, "name": "Tickets", "slug": "tickets" },
+      { "id": 511, "name": "Cars & Trucks", "slug": "cars-trucks" },
+      { "id": 512, "name": "Farm & Garden", "slug": "farm-garden" },
+      { "id": 513, "name": "Materials", "slug": "materials" },
+      { "id": 514, "name": "Furniture", "slug": "furniture" },
+      { "id": 515, "name": "Household", "slug": "household" },
+      { "id": 516, "name": "Pets & Pet Supplies", "slug": "pets-pet-supplies" },
+      { "id": 517, "name": "Sports & Games", "slug": "sports-games" },
+      { "id": 518, "name": "Heavy Equipment", "slug": "heavy-equipment" },
+      { "id": 519, "name": "Jewelry & Cosmetics", "slug": "jewelry-cosmetics" },
+      {
+        "id": 520,
+        "name": "Musical Instruments",
+        "slug": "musical-instruments"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Jobs",
+    "slug": "jobs",
+    "subcategories": [
+      { "id": 601, "name": "Accounting", "slug": "accounting" },
+      {
+        "id": 602,
+        "name": "Administration Support",
+        "slug": "administration-support"
+      },
+      { "id": 603, "name": "Job Wanted-Resume", "slug": "job-wanted-resume" },
+      { "id": 604, "name": "Science & Biotech", "slug": "science-biotech" },
+      {
+        "id": 605,
+        "name": "Advertising, Arts & Media",
+        "slug": "advertising-arts-media"
+      },
+      {
+        "id": 606,
+        "name": "Banking & Financial Services",
+        "slug": "banking-financial-services"
+      },
+      {
+        "id": 607,
+        "name": "Medical-Health Services",
+        "slug": "medical-health-services"
+      },
+      {
+        "id": 608,
+        "name": "Call Centre & Customer Service",
+        "slug": "call-centre-customer-service"
+      },
+      {
+        "id": 609,
+        "name": "Community Services & Development",
+        "slug": "community-services-development"
+      },
+      { "id": 610, "name": "General Labor", "slug": "general-labor" },
+      {
+        "id": 611,
+        "name": "Design & Architecture",
+        "slug": "design-architecture"
+      },
+      {
+        "id": 612,
+        "name": "Education & Teaching",
+        "slug": "education-teaching"
+      },
+      { "id": 613, "name": "Engineering", "slug": "engineering" },
+      {
+        "id": 614,
+        "name": "Farming & Veterinary",
+        "slug": "farming-veterinary"
+      },
+      {
+        "id": 615,
+        "name": "Government & Defence",
+        "slug": "government-defence"
+      },
+      {
+        "id": 616,
+        "name": "Healthcare & Nursing",
+        "slug": "healthcare-nursing"
+      },
+      { "id": 617, "name": "Legal", "slug": "legal" },
+      {
+        "id": 618,
+        "name": "Manufacturing, Transport & Logistics",
+        "slug": "manufacturing-transport-logistics"
+      },
+      {
+        "id": 619,
+        "name": "Marketing & Communications",
+        "slug": "marketing-communications"
+      },
+      {
+        "id": 620,
+        "name": "Mining, Resources & Energy",
+        "slug": "mining-resources-energy"
+      },
+      { "id": 621, "name": "Retail", "slug": "retail" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Services",
+    "slug": "services",
+    "subcategories": [
+      { "id": 701, "name": "Automotive", "slug": "automotive" },
+      { "id": 702, "name": "Business", "slug": "business" },
+      {
+        "id": 703,
+        "name": "Building & Construction",
+        "slug": "building-construction"
+      },
+      { "id": 704, "name": "Creative", "slug": "creative" },
+      { "id": 705, "name": "Event", "slug": "event" },
+      { "id": 706, "name": "Health & Beauty", "slug": "health-beauty" },
+      { "id": 707, "name": "Household", "slug": "household" },
+      { "id": 708, "name": "Labor & Move", "slug": "labor-move" },
+      { "id": 709, "name": "Massage", "slug": "massage" },
+      { "id": 710, "name": "Marine", "slug": "marine" },
+      { "id": 711, "name": "Lessons", "slug": "lessons" },
+      { "id": 712, "name": "Farm & Garden", "slug": "farm-garden" },
+      { "id": 713, "name": "Learning & Tutoring", "slug": "learning-tutoring" },
+      { "id": 714, "name": "Skilled Trade", "slug": "skilled-trade" },
+      { "id": 715, "name": "Photography & Video", "slug": "photography-video" },
+      { "id": 716, "name": "Real Estate", "slug": "real-estate" },
+      { "id": 717, "name": "Removals & Storage", "slug": "removals-storage" },
+      {
+        "id": 718,
+        "name": "Tax, Insurance & Financial",
+        "slug": "tax-insurance-financial"
+      },
+      {
+        "id": 719,
+        "name": "Taxi, Chauffeur & Airport Transfer",
+        "slug": "taxi-chauffeur-airport-transfer"
+      },
+      { "id": 720, "name": "Travel", "slug": "travel" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Vehicles",
+    "slug": "vehicles",
+    "subcategories": [
+      { "id": 801, "name": "Aircraft", "slug": "aircraft" },
+      {
+        "id": 802,
+        "name": "Automotive Items & Parts",
+        "slug": "automotive-items-parts"
+      },
+      { "id": 803, "name": "Boats & Watercraft", "slug": "boats-watercraft" },
+      { "id": 804, "name": "Cars", "slug": "cars" },
+      { "id": 805, "name": "Classic Cars", "slug": "classic-cars" },
+      { "id": 806, "name": "Commercial Trucks", "slug": "commercial-trucks" },
+      { "id": 807, "name": "Motorcycles", "slug": "motorcycles" },
+      { "id": 808, "name": "Off Road Vehicles", "slug": "off-road-vehicles" },
+      { "id": 809, "name": "RV & Motorhomes", "slug": "rv-motorhomes" },
+      { "id": 810, "name": "SUVs", "slug": "suvs" },
+      { "id": 811, "name": "Trucks", "slug": "trucks" },
+      {
+        "id": 812,
+        "name": "Utility & Work Trailers",
+        "slug": "utility-work-trailers"
+      },
+      { "id": 813, "name": "Vans", "slug": "vans" },
+      { "id": 814, "name": "Vehicles Wanted", "slug": "vehicles-wanted" }
+    ]
+  }
+]
