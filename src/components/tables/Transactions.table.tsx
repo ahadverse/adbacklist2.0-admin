@@ -34,8 +34,8 @@ export interface Transaction {
 
 interface TransactionTableProps {
   transactions: Transaction[];
-    reload : boolean,
-    setReload: React.Dispatch<React.SetStateAction<boolean>>;
+    reload? : boolean,
+    setReload?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function TransactionTable({ transactions ,  setReload, reload}: TransactionTableProps) {
