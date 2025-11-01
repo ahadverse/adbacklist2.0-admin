@@ -294,7 +294,8 @@ const AddBlog = () => {
           <p>{token?.token}</p>
           <label className="block mb-1 font-medium">Description</label>
           <div className="border rounded-md overflow-hidden dark:border-gray-700">
-            <Editor
+           {token?.token && <Editor
+              key={token.token} 
               apiKey={token?.token}
               value={form.desc}
               onEditorChange={(content) =>
@@ -335,7 +336,7 @@ const AddBlog = () => {
                 image_caption: true,
                 image_advtab: true,
               }}
-            />
+            />} 
           </div>
         </div>}
        
