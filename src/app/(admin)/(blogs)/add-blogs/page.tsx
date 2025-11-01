@@ -294,9 +294,10 @@ const AddBlog = () => {
           <p>{token?.token}</p>
           <label className="block mb-1 font-medium">Description</label>
           <div className="border rounded-md overflow-hidden dark:border-gray-700">
-           {token?.token && <Editor
-              key={token.token} 
-              apiKey={token?.token}
+           {token?.token && 
+           <Editor
+             
+              apiKey="txwokn3shca9e9p8n5bjcsitw1y1ahiyf5e7zgy1b6mdh8z9"
               value={form.desc}
               onEditorChange={(content) =>
                 setForm((prev) => ({ ...prev, desc: content }))
