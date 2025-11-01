@@ -11,6 +11,8 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import categories from '../../../../../public/category.json';
 import { RxCross2 } from "react-icons/rx";
+import ConfirmBulkDeleteModal from '@/components/modals/BulkDelete';
+import ConfirmBulkApproveModal from '@/components/modals/BulkApproved';
 
 const PendingPosts = () => {
   const [loading, setLoading] = useState(true);
@@ -23,6 +25,8 @@ const PendingPosts = () => {
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
   const [subCategoryOptions, setSubCategoryOptions] = useState<any[]>([]);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -96,7 +100,11 @@ const PendingPosts = () => {
 
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
-      <div className="mb-5 flex flex-row gap-2 sm:justify-end justify-center items-center">
+      {selectedIds?.length > 0  ? <div className="mb-5 flex flex-row gap-2 sm:justify-end justify-center items-center">
+       <ConfirmBulkDeleteModal reload={reload} setReload={setReload} selectedIds={selectedIds} />
+       <ConfirmBulkApproveModal reload={reload} setReload={setReload} selectedIds={selectedIds} isApproved={true} />
+       </div> :   <div className="mb-5 flex flex-row gap-2 sm:justify-end justify-center items-center">
+
         <SearchBar onChange={handleSearchChange} />
 
         <SelectDropdown
@@ -127,13 +135,16 @@ const PendingPosts = () => {
           onSelect={handleSelect}
           value={sortOrder || ''} 
         />
-
+  <div className='ml-2'>
         <RxCross2
           onClick={handleReset}
           title="Reset Filters"
           className="w-5 h-5 rounded-full cursor-pointer bg-red-600 text-white ml-auto"
         />
-      </div>
+        </div>
+      
+      </div>}
+    
 
       {loading ? (
         <p className="flex h-69 justify-center items-center gap-2">
@@ -143,7 +154,7 @@ const PendingPosts = () => {
         <div>
           {posts?.length ? (
             <>
-              <PostsTable posts={posts} setReload={setReload} reload={reload} admin={true} />
+              <PostsTable posts={posts} setReload={setReload} reload={reload} admin={true} selectedIds={selectedIds} setSelectedIds={setSelectedIds} />
               <Pagination
                 page={pagination.page}
                 limit={pagination.limit}
@@ -159,6 +170,7 @@ const PendingPosts = () => {
           )}
         </div>
       )}
+      
     </div>
   );
 };

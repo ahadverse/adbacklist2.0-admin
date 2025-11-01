@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
 
+
 const outfit = Outfit({
   subsets: ["latin"],
 });
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.className} dark:bg-gray-900`}>
+   
         <SessionProvider session={session}> 
         <ThemeProvider>
           <SidebarProvider>{children}</SidebarProvider>
@@ -39,6 +41,7 @@ export default function RootLayout({
           />
         </ThemeProvider>
         </SessionProvider>
+        
       </body>
     </html>
   );

@@ -7,15 +7,13 @@ import { BsTrash } from "react-icons/bs";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface ConfirmDeleteModalProps {
-    id: string | null;
-    route: string;
+    selectedIds: string[];
     reload: boolean;
     setReload: (value: boolean) => void;
 }
 
-const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
-    id,
-    route,
+const ConfirmBulkDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
+    selectedIds,
     reload,
     setReload,
 }) => {
@@ -25,10 +23,10 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
     const onClose = () => setOpen(false)
 
     const handleDelete = async () => {
-        if (!id) return;
+        if (!selectedIds?.length) return;
         setLoading(true);
         try {
-            await baseApi.delete(`${route}/${id}`);
+            await baseApi.put("/posts/bulk-delete", { ids: selectedIds });
             toast.success("Deleted successfully.");
             setReload(!reload);
             onClose();
@@ -43,8 +41,8 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
     return (
         <div>
 
-            <button title="Delete" onClick={() => setOpen(true)} className="dark:text-white text-sm px-2 rounded-full">
-                <BsTrash />
+            <button title="Delete" onClick={() => setOpen(true)} className="ddark:bg-dark-900 h-11 rounded-lg border border-gray-200 bg-transparent py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 sm:w-40 w-full flex items-center justify-center gap-2">
+                 <BsTrash className="text-red-500" />  Bulk Delete
             </button>
 
             <Modal
@@ -69,14 +67,14 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
                     <button
                         onClick={handleDelete}
                         disabled={loading}
-                        className="w-28  px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50"
+                        className="w-34  px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 disabled:opacity-50"
                     >
-                  
-                             {loading ? (
-                                      <AiOutlineLoading3Quarters className="animate-spin text-xl m-auto text-white" />
-                                    ) : (
-                                      "Delete"
-                                    )}
+
+                        {loading ? (
+                            <AiOutlineLoading3Quarters className="animate-spin text-xl m-auto text-white" />
+                        ) : (
+                            "Delete Selected"
+                        )}
                     </button>
                 </div>
             </Modal>
@@ -84,4 +82,4 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
     );
 };
 
-export default ConfirmDeleteModal;
+export default ConfirmBulkDeleteModal;

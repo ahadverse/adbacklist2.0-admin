@@ -40,7 +40,7 @@
     "subcategories": [
       { "id": 301, "name": "Business For Sale", "slug": "business-for-sale" },
       { "id": 302, "name": "Apts-Housing", "slug": "apts-housing" },
-      { "id": 303, "name": "Housing Wanted", "slug": "housing-wanted" },
+      { "id": 303, "name": "Houses For Sale", "slug": "houses-for-sale" },
       { "id": 304, "name": "Land For Sale", "slug": "land-for-sale" },
       {
         "id": 305,
@@ -59,14 +59,19 @@
       },
       { "id": 308, "name": "Property for Rent", "slug": "property-for-rent" },
       { "id": 309, "name": "Room-Share", "slug": "room-share" },
-      { "id": 310, "name": "Room Wanted", "slug": "room-wanted" },
+      { "id": 310, "name": "Room For Rent", "slug": "room-for-rent" },
       {
         "id": 311,
         "name": "Flatshare and Houseshare",
         "slug": "flatshare-and-houseshare"
       },
       { "id": 312, "name": "Vacation Rentals", "slug": "vacation-rentals" },
-      { "id": 313, "name": "Condos", "slug": "condos" }
+      { "id": 313, "name": "Condos For Sale", "slug": "condos-for-sale" },
+      {
+        "id": 314,
+        "name": "Apartments for Rent",
+        "slug": "apartments-for-rent"
+      }
     ]
   },
   {

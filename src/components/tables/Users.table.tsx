@@ -123,7 +123,7 @@ export default function UsersTable({ users , setReload, reload }: UsersTableProp
                     <ConfirmDeleteModal id={user?._id} reload={reload} route="users" setReload={setReload} />
                     <UpdateCreditModal userId={user?._id} reload={reload} setReload={setReload} />
                     <Link className="px-2" href={`/users/details/${user?._id}`}>
-                    <BsEye className="text-white mt-1" />
+                    <BsEye className="text-white" />
                     </Link>
                   </TableCell>
                 </TableRow>
