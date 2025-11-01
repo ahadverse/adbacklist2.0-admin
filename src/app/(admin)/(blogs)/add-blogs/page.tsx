@@ -30,6 +30,7 @@ const AddBlog = () => {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [tokenLoading, setTokenLoading] = useState(true);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [subCategoryOptions, setSubCategoryOptions] = useState<{ label: string; value: string }[]>([]);
   const [form, setForm] = useState<BlogForm>({
@@ -41,8 +42,27 @@ const AddBlog = () => {
     status: "published",
     desc: "",
   });
+  const [token, setToken] = useState({
+    token: "",
+  });
 
-  const apiToken = "85y33d08bi5k84w3nxa07aq607ko8v165dau2joyygooce9j";
+    const fetchDetails = async () => {
+    try {
+      const res = await baseApi.get("/tiny-mce");
+      setToken(res.data?.response?.token);
+      setTokenLoading(false);
+    } catch (err) {
+      setTokenLoading(false);
+      console.error(err);
+      toast.error("Failed to fetch details");
+    }
+  };
+
+  useEffect(() => {
+    setTokenLoading(true);
+    fetchDetails();
+  }, []);
+
 
   useEffect(() => {
     setMounted(true);
@@ -269,11 +289,12 @@ const AddBlog = () => {
         </div>
 
         {/* Description */}
+        {tokenLoading ?  <AiOutlineLoading3Quarters className="animate-spin text-xl m-auto text-gray-800 dark:text-white" /> :  
         <div>
           <label className="block mb-1 font-medium">Description</label>
           <div className="border rounded-md overflow-hidden dark:border-gray-700">
             <Editor
-              apiKey={apiToken}
+              apiKey={token?.token}
               value={form.desc}
               onEditorChange={(content) =>
                 setForm((prev) => ({ ...prev, desc: content }))
@@ -315,7 +336,8 @@ const AddBlog = () => {
               }}
             />
           </div>
-        </div>
+        </div>}
+       
 
         {/* Submit */}
         <button

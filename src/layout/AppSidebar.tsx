@@ -50,7 +50,8 @@ const navItems: NavItem[] = [
       { name: "Header Links", path: "/header-links"},
       { name: "Side Links", path: "/side-links"},
       { name: "Responsive Links", path: "/responsive-links"},
-      { name: "Rainbow Links", path: "/rainbow-links"}
+      { name: "Rainbow Links", path: "/rainbow-links"},
+      { name: "Tiny MCE Token", path: "/tinymce"}
     ],
   },
   {
