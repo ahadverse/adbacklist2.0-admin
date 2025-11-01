@@ -291,6 +291,7 @@ const AddBlog = () => {
         {/* Description */}
         {tokenLoading ?  <AiOutlineLoading3Quarters className="animate-spin text-xl m-auto text-gray-800 dark:text-white" /> :  
         <div>
+          <p>{token?.token}</p>
           <label className="block mb-1 font-medium">Description</label>
           <div className="border rounded-md overflow-hidden dark:border-gray-700">
             <Editor
