@@ -21,6 +21,7 @@ interface BlogForm {
   category: string;
   subCategory: string;
   image: File | null;
+  permalink: string;
   writer: string;
   status: string;
   desc: string;
@@ -35,6 +36,7 @@ const AddBlog = () => {
   const [subCategoryOptions, setSubCategoryOptions] = useState<{ label: string; value: string }[]>([]);
   const [form, setForm] = useState<BlogForm>({
     title: "",
+    permalink: "",
     category: "",
     subCategory: "",
     image: null,
@@ -140,6 +142,7 @@ const AddBlog = () => {
         title: "",
         category: "",
         subCategory: "",
+        permalink: "",
         image: null,
         writer: "",
         status: "published",
@@ -221,7 +224,16 @@ const AddBlog = () => {
             required
           />
         </div>
-
+            <div className="flex-1">
+            <label className="block mb-1 font-medium">Permalink</label>
+            <input
+              type="text"
+              name="permalink"
+              value={form.permalink}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md dark:bg-gray-900 dark:border-gray-700"
+            />
+          </div>
         {/* Category & Subcategory */}
         <div className="flex gap-4">
           <div className="flex-1">
@@ -274,6 +286,7 @@ const AddBlog = () => {
             />
           </div>
 
+
           <div className="flex-1">
             <label className="block mb-1 font-medium">Status</label>
             <select
@@ -287,6 +300,7 @@ const AddBlog = () => {
             </select>
           </div>
         </div>
+      
 
         {/* Description */}
         {tokenLoading ?  <AiOutlineLoading3Quarters className="animate-spin text-xl m-auto text-gray-800 dark:text-white" /> :  
