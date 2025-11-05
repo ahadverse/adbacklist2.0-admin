@@ -22,6 +22,8 @@ interface BlogForm {
   subCategory: string;
   image: File | null;
   permalink: string;
+  metaKey: string;
+  metaDesc: string;
   writer: string;
   status: string;
   desc: string;
@@ -39,6 +41,8 @@ const AddBlog = () => {
     permalink: "",
     category: "",
     subCategory: "",
+    metaDesc: "",
+    metaKey: "",
     image: null,
     writer: "",
     status: "published",
@@ -143,6 +147,8 @@ const AddBlog = () => {
         category: "",
         subCategory: "",
         permalink: "",
+        metaKey: "",
+        metaDesc: "",
         image: null,
         writer: "",
         status: "published",
@@ -235,6 +241,29 @@ const AddBlog = () => {
             />
           </div>
         {/* Category & Subcategory */}
+        <div className="flex gap-4">
+      <div className="flex-1">
+            <label className="block mb-1 font-medium">Meta Keywords</label>
+            <input
+              type="text"
+              name="metaKey"
+              value={form.metaKey}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md dark:bg-gray-900 dark:border-gray-700"
+            />
+          </div>    <div className="flex-1">
+            <label className="block mb-1 font-medium">Meta Descriptions</label>
+            <input
+              type="text"
+              name="metaDesc"
+              value={form.metaDesc}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md dark:bg-gray-900 dark:border-gray-700"
+            />
+          </div>
+
+          
+        </div>
         <div className="flex gap-4">
           <div className="flex-1">
             <label className="block mb-1 font-medium">Category</label>
