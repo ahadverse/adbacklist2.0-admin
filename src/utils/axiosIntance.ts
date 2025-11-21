@@ -30,6 +30,12 @@ baseApi.interceptors.response.use(
       // Clear session & redirect to login
       await signOut({ redirect: true, callbackUrl: "/login" });
     }
+    if (status === 403) {
+      console.warn("⛔ Unauthorized! Auto logging out…");
+
+      // Clear session & redirect to login
+      await signOut({ redirect: true, callbackUrl: "/login" });
+    }
 
     return Promise.reject(error);
   }
