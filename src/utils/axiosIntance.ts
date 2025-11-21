@@ -23,7 +23,7 @@ baseApi.interceptors.response.use(
   (response) => response,
   async (error) => {
     const status = error?.response?.status;
-
+      console.log(status)
     if (status === 401) {
       console.warn("⛔ Unauthorized! Auto logging out…");
 
