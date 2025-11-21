@@ -15,12 +15,14 @@ const Editor = dynamic(
   () => import("@tinymce/tinymce-react").then((mod) => mod.Editor),
   { ssr: false }
 );
-
 interface BlogForm {
   title: string;
   category: string;
   subCategory: string;
-  image: File | string | null; // <--- allow both file & url
+  image: File | null;
+  permalink: string;
+  metaKey: string;
+  metaDesc: string;
   writer: string;
   status: string;
   desc: string;
@@ -43,7 +45,11 @@ const UpdateBlog = () => {
     writer: "",
     status: "published",
     desc: "",
+    permalink: "",
+    metaKey: "",
+    metaDesc: "",
   });
+
 
   const apiToken = "85y33d08bi5k84w3nxa07aq607ko8v165dau2joyygooce9j";
 
@@ -56,10 +62,13 @@ const UpdateBlog = () => {
         title: data.title,
         category: data.category,
         subCategory: data.subCategory,
-        image: data.image, // store string url
+        image: data.image,
         writer: data.writer,
         status: data.status,
         desc: data.desc,
+        permalink: data.permalink,
+        metaDesc: data.metaDesc,
+        metaKey: data.metaKey,
       });
 
       setImagePreview(data.image ? data.image : null);
@@ -187,8 +196,42 @@ const UpdateBlog = () => {
         {/* Title */}
         <input type="text" name="title" value={form.title} onChange={handleChange}
           className="w-full px-4 py-2 border rounded-md dark:bg-gray-900 dark:border-gray-700" />
+         <div className="flex-1">
+            <label className="block mb-1 font-medium">Permalink</label>
+            <input
+              type="text"
+              name="permalink"
+              value={form.permalink}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md dark:bg-gray-900 dark:border-gray-700"
+            />
+          </div>
+        {/* Category & Subcategory */}
+        <div className="flex gap-4">
+      <div className="flex-1">
+            <label className="block mb-1 font-medium">Meta Keywords</label>
+            <input
+              type="text"
+              name="metaKey"
+              value={form.metaKey}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md dark:bg-gray-900 dark:border-gray-700"
+            />
+          </div>    <div className="flex-1">
+            <label className="block mb-1 font-medium">Meta Descriptions</label>
+            <input
+              type="text"
+              name="metaDesc"
+              value={form.metaDesc}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md dark:bg-gray-900 dark:border-gray-700"
+            />
+          </div>
 
+          
+        </div>
         {/* Category / SubCategory */}
+
         <div className="flex gap-4">
           <select name="category" value={form.category} onChange={handleCategorySelect}
             className="flex-1 px-4 py-2 border rounded-md dark:bg-gray-900 dark:border-gray-700">

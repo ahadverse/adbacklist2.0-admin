@@ -1,6 +1,6 @@
 // utils/axiosInstance.ts
 import axios from "axios";
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 // http://localhost:5000/api
 // https://adbacklist-backend2-0-vb3d.vercel.app/api
 const baseApi = axios.create({
@@ -18,5 +18,21 @@ baseApi.interceptors.request.use(async (config) => {
 
   return config;
 });
+
+baseApi.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const status = error?.response?.status;
+
+    if (status === 401) {
+      console.warn("⛔ Unauthorized! Auto logging out…");
+
+      // Clear session & redirect to login
+      await signOut({ redirect: true, callbackUrl: "/login" });
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export default baseApi;
